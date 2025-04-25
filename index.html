@@ -1,1248 +1,1075 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Naufil Moten - Data Solutions Expert</title>
-    <style>
-        :root {
-            --primary-color: #0066cc;
-            --secondary-color: #f8f9fa;
-            --text-color: #333;
-            --accent-color: #4285f4;
-            --light-gray: #e9ecef;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-        
-        a {
-            text-decoration: none;
-            color: var(--primary-color);
-            transition: color 0.3s;
-        }
-        
-        a:hover {
-            color: var(--accent-color);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header & Navigation */
-        header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-        
-        .logo {
-            font-weight: bold;
-            font-size: 1.5rem;
-            color: var(--primary-color);
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 30px;
-        }
-        
-        .nav-links a {
-            color: var(--text-color);
-            font-weight: 500;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-        
-        /* Section padding to account for fixed header */
-        section {
-            padding-top: 80px;
-            margin-top: -80px;
-        }
-        
-        /* Hero Section */
-        .hero {
-            padding: 150px 0 100px;
-            background-color: var(--secondary-color);
-            margin-top: 0;
-        }
-        
-        .hero-content {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            max-width: 600px;
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-        }
-        
-        .cta-button {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 4px;
-            font-weight: 600;
-            transition: background-color 0.3s;
-        }
-        
-        .cta-button:hover {
-            background-color: var(--accent-color);
-            color: white;
-        }
-        
-        /* About Section */
-        .about {
-            padding: 100px 0;
-        }
-        
-        .section-title {
-            font-size: 2.2rem;
-            margin-bottom: 30px;
-            color: var(--primary-color);
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background-color: var(--primary-color);
-        }
-        
-        .about-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 50px;
-        }
-        
-        .about-text {
-            flex: 1;
-        }
-        
-        .about-image {
-            flex: 1;
-            text-align: center;
-        }
-        
-        .about-image img {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Services Section */
-        .services {
-            background-color: var(--secondary-color);
-            padding: 100px 0;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .service-card {
-            background-color: white;
-            padding: 30px;
-            border-radius: 5px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-        
-        .service-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-        }
-        
-        /* Projects Section */
-        .projects {
-            padding: 100px 0;
-        }
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .project-card {
-            background-color: var(--light-gray);
-            border-radius: 5px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .project-image {
-            height: 200px;
-            background-color: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-weight: bold;
-        }
-        
-        .project-info {
-            padding: 25px;
-        }
-        
-        .project-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-        
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            margin-top: 15px;
-        }
-        
-        .tech-tag {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-right: 8px;
-            margin-bottom: 8px;
-        }
-        
-        /* Skills Section */
-/*             .skills {
-            background-color: var(--secondary-color);
-            padding: 100px 0;
-            } 
-        
-        .skills-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 50px;
-            margin-top: 50px;
-        }
-        
-        .skills-category {
-            flex: 1;
-        }
-        
-        .skills-category h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-        }
-        
-        .skill-item {
-            margin-bottom: 15px;
-        }
-        
-        .skill-item p {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-        }
-        
-        .skill-bar {
-            height: 10px;
-            background-color: #ddd;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        
-        .skill-progress {
-            height: 100%;
-            background-color: var(--primary-color);
-            border-radius: 5px;
-        } */
-
-/*         .skills {
-        background-color: var(--secondary-color);
-        padding: 100px 0;
-        }
-        
-        .skills-wrapper {
-            margin-top: 50px;
-        }
-        
-        .skills-category {
-            margin-bottom: 40px;
-        }
-        
-        .skills-category h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-            position: relative;
-            display: inline-block;
-            padding-bottom: 10px;
-        }
-        
-        .skills-category h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background-color: var(--primary-color);
-        }
-        
-        .skills-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-        
-        .skill-tag {
-            background-color: white;
-            color: var(--text-color);
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        
-        .skill-tag:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            background-color: var(--primary-color);
-            color: white;
-        } */
-
-        .skills {
-        background-color: var(--secondary-color);
-        padding: 100px 0;
-        }
-        
-        .skills-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 50px;
-            margin-top: 10px;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        
-        .section-title::after {
-            content: none;
-        }
-        
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .skill-card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 25px 15px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .skill-logo {
-            margin-right: 15px;
-            min-width: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .skill-logo img {
-            max-width: 100%;
-            max-height: 30px;
-            object-fit: contain;
-        }
-        
-        .skill-name {
-            font-weight: 500;
-            color: var(--text-color);
-        }
-        
-        /* Experience Section */
-        .experience {
-            padding: 100px 0;
-        }
-        
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 50px auto 0;
-        }
-        
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 3px;
-            background-color: var(--light-gray);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -1.5px;
-        }
-        
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
-            margin-bottom: 30px;
-        }
-        
-        .timeline-item:nth-child(odd) {
-            left: 0;
-        }
-        
-        .timeline-item:nth-child(even) {
-            left: 50%;
-        }
-        
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: white;
-            border: 3px solid var(--primary-color);
-            top: 15px;
-            border-radius: 50%;
-            z-index: 1;
-        }
-        
-        .timeline-item:nth-child(odd)::after {
-            right: -13px;
-        }
-        
-        .timeline-item:nth-child(even)::after {
-            left: -13px;
-        }
-        
-        .timeline-content {
-            padding: 20px;
-            background-color: white;
-            border-radius: 5px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .timeline-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-        
-        .timeline-content h4 {
-            font-size: 1rem;
-            margin-bottom: 10px;
-            color: #666;
-        }
-        
-        .timeline-date {
-            font-style: italic;
-            color: #888;
-            margin-bottom: 15px;
-            display: block;
-        }
-        
-        /* Contact Section */
-        .contact {
-            background-color: var(--secondary-color);
-            padding: 100px 0;
-        }
-        
-        .contact-container {
-            display: flex;
-            gap: 50px;
-            margin-top: 50px;
-        }
-        
-        .contact-info {
-            flex: 1;
-        }
-        
-        .contact-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .contact-icon {
-            font-size: 1.5rem;
-            margin-right: 15px;
-            color: var(--primary-color);
-            min-width: 30px;
-            text-align: center;
-        }
-        
-        .contact-form {
-            flex: 1;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-        }
-        
-        textarea.form-control {
-            height: 150px;
-            resize: vertical;
-        }
-        
-        .submit-btn {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: background-color 0.3s;
-        }
-        
-        .submit-btn:hover {
-            background-color: var(--accent-color);
-        }
-        
-        /* Footer */
-        footer {
-            background-color: #2c3e50;
-            color: white;
-            padding: 30px 0;
-            text-align: center;
-        }
-        
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .social-links {
-            display: flex;
-            margin-bottom: 20px;
-        }
-        
-        .social-icon {
-            color: white;
-            margin: 0 15px;
-            font-size: 1.5rem;
-            transition: color 0.3s;
-        }
-        
-        .social-icon:hover {
-            color: var(--primary-color);
-        }
-        
-        .footer-text {
-            margin-bottom: 10px;
-        }
-        
-        /* Responsive Styles */
-        @media (max-width: 1200px) {
-        .skills-grid {
-            grid-template-columns: repeat(4, 1fr);
-            }
-        }
-        
-        @media (max-width: 992px) {
-            .skills-grid {
-            grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .about-content {
-                flex-direction: column;
-            }
-            
-            .skills-container {
-                flex-direction: column;
-            }
-            
-            .contact-container {
-                flex-direction: column;
-            }
-            
-            .timeline::after {
-                left: 40px;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                padding-left: 80px;
-                padding-right: 0;
-            }
-            
-            .timeline-item:nth-child(even) {
-                left: 0;
-            }
-            
-            .timeline-item::after {
-                left: 30px;
-            }
-            
-            .timeline-item:nth-child(odd)::after {
-                right: auto;
-                left: 30px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-/*             .skills-tags {
-            gap: 10px;
-        }
-        
-            .skill-tag {
-                padding: 8px 16px;
-                font-size: 0.9rem;
-            } */
-            .skills-grid {
-            grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 480px) {
-        .skills-grid {
-            grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Header -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Naufil Moten | Data Engineer & Analyst</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header with improved navigation -->
     <header>
-        <div class="container">
-            <nav>
-                <div class="logo">DataSolutions</div>
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+      <div class="container">
+        <div class="header-content">
+          <div class="logo-container">
+            <!--<img src="/images/dva.png" alt="Ameera Haider" class="profile-image">-->
+            <div class="logo-text">Ameera Haider</div>
+          </div>
+          <nav>
+            <ul class="nav-links">
+              <li><a href="#about" class="nav-link">About</a></li>
+              <li><a href="#experience" class="nav-link">Experience</a></li>
+              <li><a href="#projects" class="nav-link">Projects</a></li>
+              <li>
+                <a href="#certifications" class="nav-link">Certifications</a>
+              </li>
+              <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+          </nav>
         </div>
+      </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with background and better layout -->
     <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Naufil Moten</h1>
-                <p>End-to-End Data Solutions Expert specializing in transforming raw data into actionable business insights.</p>
-                <a href="#contact" class="cta-button">Get in Touch</a>
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <span class="greeting">Hello, I'm</span>
+            <h1>Naufil Moten</h1>
+            <h2>Data Engineer & Analyst</h2>
+            <p>
+              End-to-End Data Solutions Expert specializing in transforming raw data into actionable business insights.
+            </p>
+            <div class="hero-cta">
+              <a href="#contact" class="primary-button">Get In Touch</a>
+              <a href="#projects" class="secondary-button">View My Work</a>
             </div>
+          </div>
+          <div class="hero-image">
+            <img
+              src="/images/ameera.jpg"
+              alt="Ameera Haider"
+              class="main-profile-image"
+            />
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>With 3 years of experience as a Consultant in Data Engineering and Analytics, I specialize in transforming raw data into actionable insights through robust business intelligence reporting. I design schemas to support scalable reporting structures, craft complex SQL queries for data transformation, validation, and aggregation, ensuring data accuracy and reliability across analytics layers. My expertise supports the development of dynamic Power BI dashboards and performance reports, using data sourced from Microsoft Fabric, Lakehouses, Warehouses and SharePoint-based systems. To streamline and scale analytics workflows, I build and maintain automated ETL pipelines using Apache Spark, Airflow, Snowflake, Kafka, and Python—enabling efficient, end-to-end data integration and delivery.</p>
-                    </div>
-                <div class="about-image">
-                    <img src="/api/placeholder/400/320" alt="Profile Photo">
-                </div>
-            </div>
+    <!-- About Section with improved layout -->
+    <section id="about" class="about section">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="section-subtitle">Who I am and what I do</div>
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+                With 3 years of experience as a Consultant in Data Engineering and Analytics, I specialize in transforming raw data into actionable insights through robust business intelligence reporting.
+            </p>
+            <p>
+              I design schemas to support scalable reporting structures, craft complex SQL queries for data transformation, validation, and aggregation, ensuring data accuracy and reliability across analytics layers. My expertise supports the development of dynamic Power BI dashboards and performance reports, using data sourced from Microsoft Fabric, Lakehouses, Warehouses and SharePoint-based systems.
+            </p>
+            <p>
+              To streamline and scale analytics workflows, I build and maintain automated ETL pipelines using Apache Spark, Airflow, Snowflake, Kafka, and Python—enabling efficient, end-to-end data integration and delivery.
+            </p>
+          </div>
         </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2 class="section-title">Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">📊</div>
-                    <h3>Data Modeling, Strategy & Architecture</h3>
-                    <p>Developing comprehensive data strategies and designing scalable architectures that align with business objectives and support future growth.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🔄</div>
-                    <h3>Data Engineering & ETL Pipelines</h3>
-                    <p>Building robust data pipelines and ETL processes that integrate diverse data sources and ensure data quality and reliability.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📈</div>
-                    <h3>Business Intelligence, Analytics & Visualization</h3>
-                    <p>Creating insightful analytics solutions and interactive visualizations that transform complex data into clear, actionable insights.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🧹</div>
-                    <h3>Data Cleaning & Quality Assurance</h3>
-                    <p>Developing and deploying machine learning models that unlock predictive capabilities and drive automated decision-making processes.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🔍</div>
-                    <h3>Data Cleaning & Transformation</h3>
-                    <p>I clean and transform raw data into accurate, structured formats ready for analysis. Using SQL and Python, I handle missing values, standardize formats, and ensure data quality to support reliable reporting and decision-making.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🧠</div>
-                    <h3>Data-Driven Consultation</h3>
-                    <p>Providing expert guidance on leveraging data assets effectively and building data-driven organizational cultures.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">Project Image Placeholder</div>
-                    <div class="project-info">
-                        <h3>Retail Analytics Platform</h3>
-                        <p>Developed an end-to-end analytics solution for a major retail chain that integrated point-of-sale, inventory, and customer data to provide real-time insights, resulting in a 15% increase in operational efficiency.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Spark</span>
-                            <span class="tech-tag">AWS</span>
-                            <span class="tech-tag">Tableau</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">Project Image Placeholder</div>
-                    <div class="project-info">
-                        <h3>Predictive Maintenance System</h3>
-                        <p>Built a machine learning system that predicts equipment failures for a manufacturing company, reducing downtime by 30% and maintenance costs by 25% through preventive interventions.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">Azure</span>
-                            <span class="tech-tag">IoT</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">Project Image Placeholder</div>
-                    <div class="project-info">
-                        <h3>Predictive Maintenance System</h3>
-                        <p>Built a machine learning system that predicts equipment failures for a manufacturing company, reducing downtime by 30% and maintenance costs by 25% through preventive interventions.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">Azure</span>
-                            <span class="tech-tag">IoT</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">Project Image Placeholder</div>
-                    <div class="project-info">
-                        <h3>Predictive Maintenance System</h3>
-                        <p>Built a machine learning system that predicts equipment failures for a manufacturing company, reducing downtime by 30% and maintenance costs by 25% through preventive interventions.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">TensorFlow</span>
-                            <span class="tech-tag">Azure</span>
-                            <span class="tech-tag">IoT</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">Project Image Placeholder</div>
-                    <div class="project-info">
-                        <h3>Financial Data Warehouse</h3>
-                        <p>Designed and implemented a comprehensive data warehouse for a financial institution, integrating multiple systems and enabling advanced reporting and analysis capabilities.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">SQL</span>
-                            <span class="tech-tag">Airflow</span>
-                            <span class="tech-tag">Snowflake</span>
-                            <span class="tech-tag">Power BI</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </section>
 
     <!-- Skills Section -->
-<!--     <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Skills</h2>
-            <div class="skills-container">
-                <div class="skills-category">
-                    <h3>Data Engineering</h3>
-                    <div class="skill-item">
-                        <p><span>ETL/ELT Pipelines</span><span>95%</span></p>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 95%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <p><span>Data Warehousing</span><span>90%</span></p>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <p><span>Big Data Technologies</span><span>85%</span></p>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <p><span>Data Quality</span><span>90%</span></p>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%;"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skills-category">
-                    <h3>Data Analysis</h3>
-                    <div class="skill-item">
-                        <p><span>Statistical Analysis</span><span>85%</span></p>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <p><span>Data Visualization</span><span>90%</span></p>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <p><span>Business Intelligence</span><span>95%</span></p>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 95%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <p><span>Predictive Analytics</span><span>80%</span></p>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 80%;"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skills-category">
-                    <h3>Technologies</h3>
-                    <div class="skill-item">
-                        <p><span>Python/R</span><span>95%</span></p>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 95%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <p><span>SQL/NoSQL</span><span>90%</span></p>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <p><span>Cloud Platforms</span><span>85%</span></p>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <p><span>ML Frameworks</span><span>80%</span></p>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 80%;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-<!--     <section id="skills" class="skills">
-    <div class="container">
-        <h2 class="section-title">Skills & Expertise</h2>
-        
-        <div class="skills-wrapper">
-            <div class="skills-category">
-                <h3>Data Engineering</h3>
-                <div class="skills-tags">
-                    <span class="skill-tag">ETL/ELT Pipelines</span>
-                    <span class="skill-tag">Data Warehousing</span>
-                    <span class="skill-tag">Apache Spark</span>
-                    <span class="skill-tag">Airflow</span>
-                    <span class="skill-tag">Kafka</span>
-                    <span class="skill-tag">Snowflake</span>
-                    <span class="skill-tag">Data Lakes</span>
-                    <span class="skill-tag">Data Modeling</span>
-                    <span class="skill-tag">Data Integration</span>
-                    <span class="skill-tag">Data Architecture</span>
-                </div>
-            </div>
-            
-            <div class="skills-category">
-                <h3>Data Analysis</h3>
-                <div class="skills-tags">
-                    <span class="skill-tag">Statistical Analysis</span>
-                    <span class="skill-tag">Data Visualization</span>
-                    <span class="skill-tag">Business Intelligence</span>
-                    <span class="skill-tag">Predictive Analytics</span>
-                    <span class="skill-tag">Power BI</span>
-                    <span class="skill-tag">Tableau</span>
-                    <span class="skill-tag">Exploratory Analysis</span>
-                    <span class="skill-tag">Data Mining</span>
-                    <span class="skill-tag">Reporting</span>
-                    <span class="skill-tag">KPI Monitoring</span>
-                </div>
-            </div>
-            
-            <div class="skills-category">
-                <h3>Programming & Databases</h3>
-                <div class="skills-tags">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">SQL</span>
-                    <span class="skill-tag">R</span>
-                    <span class="skill-tag">NoSQL</span>
-                    <span class="skill-tag">PostgreSQL</span>
-                    <span class="skill-tag">MongoDB</span>
-                    <span class="skill-tag">Azure SQL</span>
-                    <span class="skill-tag">Data Structures</span>
-                    <span class="skill-tag">Algorithms</span>
-                    <span class="skill-tag">Pandas</span>
-                </div>
-            </div>
-            
-            <div class="skills-category">
-                <h3>Cloud & Infrastructure</h3>
-                <div class="skills-tags">
-                    <span class="skill-tag">AWS</span>
-                    <span class="skill-tag">Azure</span>
-                    <span class="skill-tag">Google Cloud</span>
-                    <span class="skill-tag">Databricks</span>
-                    <span class="skill-tag">Microsoft Fabric</span>
-                    <span class="skill-tag">Docker</span>
-                    <span class="skill-tag">Kubernetes</span>
-                    <span class="skill-tag">CI/CD</span>
-                    <span class="skill-tag">IaC</span>
-                    <span class="skill-tag">Security</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    <section id="skills" class="skills">
-    <div class="container">
+    <section id="skills" class="skills section">
+      <div class="container">
         <h2 class="section-title">Skills</h2>
-        <p class="skills-subtitle">Technologies I work with</p>
-        
-        <div class="skills-grid">
-            <!-- Row 1 -->
-            <div class="skill-card">
-                <div class="skill-logo">
-                    <img src="/api/placeholder/40/40" alt="Apache Spark Logo">
-                </div>
-                <div class="skill-name">Apache Spark</div>
+        <div class="section-subtitle">Technologies I work with</div>
+        <div class="skills-container">
+          <div class="skills-grid">
+            <div class="skill-item">
+              <i class="fab fa-aws"></i>
+              <span>AWS</span>
             </div>
-            <div class="skill-card">
-                <div class="skill-logo">
-                    <img src="/api/placeholder/40/40" alt="Airflow Logo">
-                </div>
-                <div class="skill-name">Airflow</div>
+            <div class="skill-item">
+              <i class="fas fa-cubes"></i>
+              <span>Terraform</span>
             </div>
-            <div class="skill-card">
-                <div class="skill-logo">
-                    <img src="/api/placeholder/40/40" alt="Kafka Logo">
-                </div>
-                <div class="skill-name">Kafka</div>
+            <div class="skill-item">
+              <i class="fa-solid fa-infinity"></i>
+              <span>DevOps</span>
             </div>
-            <div class="skill-card">
-                <div class="skill-logo">
-                    <img src="/api/placeholder/40/40" alt="Snowflake Logo">
-                </div>
-                <div class="skill-name">Snowflake</div>
+            <div class="skill-item">
+              <i class="fab fa-docker"></i>
+              <span>Docker & Kubernetes</span>
             </div>
-            <div class="skill-card">
-                <div class="skill-logo">
-                    <img src="/api/placeholder/40/40" alt="Azure Data Factory Logo">
-                </div>
-                <div class="skill-name">Azure Data Factory</div>
+            <div class="skill-item">
+              <i class="devicon-jenkins-line" style="font-size: 50px"></i>
+              <span>Jenkins</span>
             </div>
-            
-            <!-- Row 2 -->
-            <div class="skill-card">
-                <div class="skill-logo">
-                    <img src="/api/placeholder/40/40" alt="Python Logo">
-                </div>
-                <div class="skill-name">Python</div>
+            <div class="skill-item">
+              <i class="fab fa-github"></i>
+              <span>GitHub</span>
             </div>
-            <div class="skill-card">
-                <div class="skill-logo">
-                    <img src="/api/placeholder/40/40" alt="SQL Logo">
-                </div>
-                <div class="skill-name">SQL</div>
+            <div class="skill-item">
+              <i class="fab fa-python"></i>
+              <span>Python</span>
             </div>
-            <div class="skill-card">
-                <div class="skill-logo">
-                    <img src="/api/placeholder/40/40" alt="Power BI Logo">
-                </div>
-                <div class="skill-name">Power BI</div>
+            <div class="skill-item">
+              <i class="fab fa-node-js"></i>
+              <span>Node.js & React</span>
             </div>
-            <div class="skill-card">
-                <div class="skill-logo">
-                    <img src="/api/placeholder/40/40" alt="Tableau Logo">
-                </div>
-                <div class="skill-name">Tableau</div>
+            <div class="skill-item">
+              <i class="fas fa-chart-line"></i>
+              <span>Monitoring & Logging</span>
             </div>
-            <div class="skill-card">
-                <div class="skill-logo">
-                    <img src="/api/placeholder/40/40" alt="Microsoft Fabric Logo">
-                </div>
-                <div class="skill-name">Microsoft Fabric</div>
+            <div class="skill-item">
+              <i class="fas fa-shield-alt"></i>
+              <span>Security & Compliance</span>
             </div>
-            
-            <!-- Row 3 -->
-            <div class="skill-card">
-                <div class="skill-logo">
-                    <img src="/api/placeholder/40/40" alt="Data Warehousing Logo">
-                </div>
-                <div class="skill-name">Data Warehousing</div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-logo">
-                    <img src="/api/placeholder/40/40" alt="Data Lakes Logo">
-                </div>
-                <div class="skill-name">Data Lakes</div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-logo">
-                    <img src="/api/placeholder/40/40" alt="Data Modeling Logo">
-                </div>
-                <div class="skill-name">Data Modeling</div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-logo">
-                    <img src="/api/placeholder/40/40" alt="Business Intelligence Logo">
-                </div>
-                <div class="skill-name">Business Intelligence</div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-logo">
-                    <img src="/api/placeholder/40/40" alt="Predictive Analytics Logo">
-                </div>
-                <div class="skill-name">Predictive Analytics</div>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <h2 class="section-title">Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Lead Data Scientist</h3>
-                        <h4>XYZ Corporation</h4>
-                        <span class="timeline-date">2020 - Present</span>
-                        <p>Lead a team of data professionals in developing and implementing end-to-end data solutions. Designed and deployed machine learning models that improved operational efficiency by 25%.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Data Engineer</h3>
-                        <h4>ABC Technologies</h4>
-                        <span class="timeline-date">2018 - 2020</span>
-                        <p>Built and maintained data pipelines and infrastructure that processed over 5TB of data daily. Implemented data quality frameworks that reduced error rates by 40%.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Business Intelligence Analyst</h3>
-                        <h4>Global Solutions Inc.</h4>
-                        <span class="timeline-date">2016 - 2018</span>
-                        <p>Developed dashboards and reports that provided actionable insights to executive leadership. Automated reporting processes that saved 20+ hours per week.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Data Analyst</h3>
-                        <h4>Tech Innovators</h4>
-                        <span class="timeline-date">2014 - 2016</span>
-                        <p>Performed data analysis and created visualizations that supported business decisions. Identified patterns and trends that led to a 15% increase in customer retention.</p>
-                    </div>
-                </div>
+    <!-- Experience Section with timeline style -->
+    <section id="experience" class="experience section">
+      <div class="container">
+        <h2 class="section-title">Experience</h2>
+        <div class="section-subtitle">My professional journey</div>
+
+        <div class="timeline">
+          <div class="experience-item">
+            <div class="experience-date">
+              <span>November 2024 - Present</span>
             </div>
+            <div class="experience-content">
+              <h3 class="experience-title">Cloud Engineer</h3>
+              <div class="experience-company">
+                <i class="fas fa-building"></i> Cloudelligent, Dallas, Texas
+              </div>
+              <ul class="experience-description">
+                <li>
+                  Designed and provisioned scalable cloud environments including
+                  EC2, ECS, and Elastic Beanstalk using Terraform.
+                </li>
+                <li>
+                  Developed and managed automated deployment pipelines using AWS
+                  CodePipeline and Jenkins, integrating Docker and GitHub for
+                  seamless workflows.
+                </li>
+                <li>
+                  Configured secure and scalable AWS architectures featuring
+                  VPCs, Application Load Balancers (ALBs), Elastic File Systems
+                  (EFS), and tailored security groups.
+                </li>
+                <li>
+                  Implemented logging and monitoring solutions using AWS
+                  CloudWatch to ensure performance and reliability of cloud
+                  applications.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="experience-item">
+            <div class="experience-date">
+              <span>July 2024 - September 2024</span>
+            </div>
+            <div class="experience-content">
+              <h3 class="experience-title">Cloud Intern</h3>
+              <div class="experience-company">
+                <i class="fas fa-building"></i> Cloudelligent, Dallas, Texas
+              </div>
+              <ul class="experience-description">
+                <li>
+                  Provisioned EC2, ECS, and Elastic Beanstalk environments using
+                  Terraform.
+                </li>
+                <li>
+                  Set up AWS CodePipeline and Jenkins pipelines for automated
+                  deployments with Docker and GitHub integration.
+                </li>
+                <li>
+                  Configured scalable AWS architectures with VPCs, ALBs, EFS,
+                  and security groups.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="experience-item">
+            <div class="experience-date">
+              <span>June 2024 - July 2024</span>
+            </div>
+            <div class="experience-content">
+              <h3 class="experience-title">Fellowship Associate - Backend</h3>
+              <div class="experience-company">
+                <i class="fas fa-building"></i> Fasset, Dubai, UAE
+              </div>
+              <ul class="experience-description">
+                <li>
+                  Completed Full Stack Development Course on Udemy, mastering
+                  front-end and back-end technologies, and applied skills to
+                  hands-on assignments.
+                </li>
+                <li>
+                  Actively engaged in coding exercises, group projects, and
+                  discussions, showcasing strong commitment to continuous
+                  learning and software development.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="experience-item">
+            <div class="experience-date">
+              <span>June 2023 - August 2023</span>
+            </div>
+            <div class="experience-content">
+              <h3 class="experience-title">DevOps Intern</h3>
+              <div class="experience-company">
+                <i class="fas fa-building"></i> Musketeers Tech (Private) Ltd.,
+                Lahore, Pakistan
+              </div>
+              <ul class="experience-description">
+                <li>
+                  Acquired foundational skills in AWS and configured 15+ VPCs.
+                </li>
+                <li>
+                  Produced 20+ user data and Bash scripts, reducing software
+                  installation times by 30%.
+                </li>
+                <li>
+                  Authored 50+ Terraform scripts for AWS, decreasing resource
+                  provisioning time by 25%.
+                </li>
+                <li>
+                  Set up and managed 5 CI/CD pipelines for automated application
+                  deployment.
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Contact Me</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Get In Touch</h3>
-                    <div class="contact-item">
-                        <div class="contact-icon">📧</div>
-                        <div>email@example.com</div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">📱</div>
-                        <div>+1 (123) 456-7890</div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div>City, State, Country</div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">💼</div>
-                        <div>Available for freelance and full-time opportunities</div>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" class="form-control" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
-                </div>
+    <!-- Projects Section with cards -->
+    <section id="projects" class="projects section">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <div class="section-subtitle">What I've built</div>
+
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-content">
+              <h3 class="project-title">
+                Doctor Appointments Microservices – Scalable Web App
+              </h3>
+              <p class="project-description">
+                A robust, scalable web application built using a microservices
+                architecture that allows users to view doctors and appointments.
+                The project demonstrates modern software development practices,
+                including containerization, continuous integration, and
+                cross-service communication.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Microservices</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">Express</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Flask</span>
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">Kubernetes</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">GitHub Actions</span>
+                <span class="tech-tag">CI/CD</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/ameerahaider/Doctors-Appointment-App"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fab fa-github"></i> Repository
+                </a>
+              </div>
             </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-content">
+              <h3 class="project-title">
+                Nginx Load Balancer on AWS EC2 – Manual Setup
+              </h3>
+              <p class="project-description">
+                Configured an Nginx load balancer on AWS EC2 instances to
+                distribute traffic between two backend EC2 instances. The setup
+                was done manually using the AWS console, with step-by-step
+                explanations and screenshots.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">AWS EC2</span>
+                <span class="tech-tag">Nginx</span>
+                <span class="tech-tag">Load Balancing</span>
+                <span class="tech-tag">Networking</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/ameerahaider/AWS-Cloud-Tasks/tree/main/Task3"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fab fa-github"></i> Repository
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-content">
+              <h3 class="project-title">
+                ECS Fargate with ALB & EFS – Terraform Deployment
+              </h3>
+              <p class="project-description">
+                Built a highly available and scalable ECS Fargate setup using
+                Terraform. The deployment includes an Application Load Balancer
+                (ALB) for traffic distribution and Elastic File System (EFS) for
+                persistent storage.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Terraform</span>
+                <span class="tech-tag">AWS ECS</span>
+                <span class="tech-tag">ALB</span>
+                <span class="tech-tag">EFS</span>
+                <span class="tech-tag">Fargate</span>
+                <span class="tech-tag">Networking</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/ameerahaider/AWS-Cloud-Tasks/tree/main/Task5"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fab fa-github"></i> Repository
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-content">
+              <h3 class="project-title">
+                ECS EC2 with EFS & ALB – Terraform Deployment
+              </h3>
+              <p class="project-description">
+                Deployed an Nginx server on AWS ECS EC2 instances, integrated
+                with an ALB, EFS for persistent storage, and CloudWatch Logs for
+                monitoring.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Terraform</span>
+                <span class="tech-tag">AWS ECS</span>
+                <span class="tech-tag">EC2</span>
+                <span class="tech-tag">ALB</span>
+                <span class="tech-tag">EFS</span>
+                <span class="tech-tag">CloudWatch</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/ameerahaider/AWS-Cloud-Tasks/tree/main/Task6"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fab fa-github"></i> Repository
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-content">
+              <h3 class="project-title">
+                CI/CD for ECS EC2 – AWS CodePipeline & Terraform
+              </h3>
+              <p class="project-description">
+                Automated deployment of an application on ECS EC2 using AWS
+                CodePipeline and Terraform for Infrastructure as Code.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Terraform</span>
+                <span class="tech-tag">AWS ECS</span>
+                <span class="tech-tag">CodePipeline</span>
+                <span class="tech-tag">CI/CD</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/ameerahaider/AWS-Cloud-Tasks/tree/main/Task8"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fab fa-github"></i> Repository
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-content">
+              <h3 class="project-title">
+                Node.js on Elastic Beanstalk – CI/CD with Terraform
+              </h3>
+              <p class="project-description">
+                Fully automated deployment of a Node.js application using
+                Terraform, AWS Elastic Beanstalk, and AWS CodePipeline for
+                CI/CD.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Terraform</span>
+                <span class="tech-tag">AWS Elastic Beanstalk</span>
+                <span class="tech-tag">CodePipeline</span>
+                <span class="tech-tag">CI/CD</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/ameerahaider/AWS-Cloud-Tasks/tree/main/Task11"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fab fa-github"></i> Repository
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-content">
+              <h3 class="project-title">
+                Jenkins Agent & ECS Pipeline – Automated Deployment
+              </h3>
+              <p class="project-description">
+                Automated setup of a Jenkins agent and ECS deployment pipeline
+                using Terraform, managing the infrastructure and CI/CD workflow.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Terraform</span>
+                <span class="tech-tag">Jenkins</span>
+                <span class="tech-tag">AWS ECS</span>
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">CI/CD</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/ameerahaider/AWS-Cloud-Tasks/tree/main/Task13"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fab fa-github"></i> Repository
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-content">
+              <h3 class="project-title">
+                Node.js on EC2 – Terraform & Jenkins Pipeline
+              </h3>
+              <p class="project-description">
+                Automated deployment of a Node.js application on AWS EC2 using
+                Terraform, integrated with a scripted Jenkins pipeline for
+                CI/CD.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Terraform</span>
+                <span class="tech-tag">Jenkins</span>
+                <span class="tech-tag">AWS EC2</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">CI/CD</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/ameerahaider/AWS-Cloud-Tasks/tree/main/Task14"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fab fa-github"></i> Repository
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-content">
+              <h3 class="project-title">
+                Terraform Workspaces – Multi-Environment Management
+              </h3>
+              <p class="project-description">
+                Explanation and documentation of Terraform workspaces, including
+                use cases and best practices for managing multiple environments.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Terraform</span>
+                <span class="tech-tag">Infrastructure as Code</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/ameerahaider/AWS-Cloud-Tasks/tree/main/Task15"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fab fa-github"></i> Repository
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-content">
+              <h3 class="project-title">
+                EKS Cluster on AWS – Terraform & Kubernetes
+              </h3>
+              <p class="project-description">
+                Automated deployment of an AWS EKS cluster using Terraform,
+                including Kubernetes deployments and services configuration.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Terraform</span>
+                <span class="tech-tag">AWS EKS</span>
+                <span class="tech-tag">Kubernetes</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/ameerahaider/AWS-Cloud-Tasks/tree/main/Task17"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fab fa-github"></i> Repository
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-content">
+              <h3 class="project-title">
+                EC2 Monitoring with Prometheus & Grafana
+              </h3>
+              <p class="project-description">
+                Installed and configured Prometheus and Grafana on Windows to
+                monitor AWS EC2 instances using Node Exporter.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Prometheus</span>
+                <span class="tech-tag">Grafana</span>
+                <span class="tech-tag">EC2 Monitoring</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/ameerahaider/AWS-Cloud-Tasks/tree/main/Task19"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fab fa-github"></i> Repository
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-content">
+              <h3 class="project-title">
+                WordPress Deployment with Ansible & Docker
+              </h3>
+              <p class="project-description">
+                Automated deployment of a WordPress application using Ansible on
+                AWS EC2 instances with MySQL and Docker.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Ansible</span>
+                <span class="tech-tag">AWS EC2</span>
+                <span class="tech-tag">WordPress</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">Docker</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/ameerahaider/AWS-Cloud-Tasks/tree/main/Task20"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fab fa-github"></i> Repository
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-content">
+              <h3 class="project-title">
+                AWS Site-to-Site VPN – Secure VPC Connectivity
+              </h3>
+              <p class="project-description">
+                Configured a site-to-site VPN between an AWS VPC and an Ubuntu
+                20.04 machine using StrongSwan, securing communication between
+                networks.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">AWS VPC</span>
+                <span class="tech-tag">VPN</span>
+                <span class="tech-tag">Ubuntu</span>
+                <span class="tech-tag">StrongSwan</span>
+                <span class="tech-tag">Networking</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/ameerahaider/AWS-Cloud-Tasks/tree/main/Task21"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fab fa-github"></i> Repository
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <!-- <div class="project-image">
+                        <img src="/api/placeholder/400/300" alt="AWS Infrastructure Automation">
+                    </div> -->
+            <div class="project-content">
+              <h3 class="project-title">
+                Automated OrangeHRM Deployment on AWS EC2
+              </h3>
+              <p class="project-description">
+                A fully automated deployment of OrangeHRM on AWS EC2 instances
+                using Infrastructure as Code (IaC) principles. This solution
+                leverages Terraform, AWS Secrets Manager, and GitLab CI/CD
+                pipelines to provision infrastructure and deploy the OrangeHRM
+                application securely and efficiently.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Terraform</span>
+                <span class="tech-tag">Infrastructure as Code</span>
+                <span class="tech-tag">AWS</span>
+                <span class="tech-tag">CICD</span>
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">Gitlab CI</span>
+                <span class="tech-tag">EC2</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">Secrets Manager</span>
+                <span class="tech-tag">Load Balancing</span>
+                <span class="tech-tag">Autoscaling</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/ameerahaider/AWS-Automated-Deployment-for-OrangeHRM"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fab fa-github"></i> Repository
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <!-- <div class="project-image">
+                        <img src="/api/placeholder/400/300" alt="AWS Infrastructure Automation">
+                    </div> -->
+            <div class="project-content">
+              <h3 class="project-title">
+                AWS Terraform Deployment with Automated CI/CD Pipeline
+              </h3>
+              <p class="project-description">
+                A Terraform-based AWS infrastructure deployment integrated with
+                a CI/CD pipeline for automated building and deployment of a
+                Python web application. The system provisions a scalable
+                architecture with VPC, security groups, EC2 instances, an
+                autoscaling group, and an ALB while leveraging Docker and Amazon
+                ECR for containerized deployments.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Terraform</span>
+                <span class="tech-tag">Infrastructure as Code</span>
+                <span class="tech-tag">AWS</span>
+                <span class="tech-tag">CICD</span>
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">Gitlab CI</span>
+                <span class="tech-tag">ECR</span>
+                <span class="tech-tag">Load Balancing</span>
+                <span class="tech-tag">Autoscaling</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/ameerahaider/AWS-Terraform-Deployment-with-CI-CD"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fab fa-github"></i> Repository
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <!-- <div class="project-image">
+                        <img src="/api/placeholder/400/300" alt="AWS Infrastructure Automation">
+                    </div> -->
+            <div class="project-content">
+              <h3 class="project-title">
+                Scalable AWS Infrastructure Deployment with Terraform
+              </h3>
+              <p class="project-description">
+                A Terraform-based solution for deploying a scalable and highly
+                available AWS infrastructure, including a VPC, security groups,
+                EC2 instances, an autoscaling group, and an application load
+                balancer (ALB). The modular approach ensures flexibility,
+                security, and efficient resource management.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Terraform</span>
+                <span class="tech-tag">Infrastructure as Code</span>
+                <span class="tech-tag">AWS</span>
+                <span class="tech-tag">VPC</span>
+                <span class="tech-tag">EC2</span>
+                <span class="tech-tag">Load Balancing</span>
+                <span class="tech-tag">Autoscaling</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/ameerahaider/Terraform-AWS-Infrastructure"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fab fa-github"></i> Repository
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <!-- <div class="project-image">
+                        <img src="/api/placeholder/400/300" alt="CI/CD Pipeline Automation">
+                    </div> -->
+            <div class="project-content">
+              <h3 class="project-title">
+                TranspaRent – Blockchain-Powered Rental Management
+              </h3>
+              <p class="project-description">
+                An innovative rental property management application integrating
+                blockchain for transparent contract management and AI for
+                intelligent insights. TranspaRent enhances efficiency, security,
+                and trust in rental transactions, streamlining operations for
+                property managers and tenants.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Blockchain</span>
+                <span class="tech-tag">Solidity</span>
+                <span class="tech-tag">Web3.js</span>
+                <span class="tech-tag">AI</span>
+                <span class="tech-tag">Flask</span>
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Truffle</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/ameerahaider/TranspaRent"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fab fa-github"></i> Repository
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <!-- <div class="project-image">
+                        <img src="/api/placeholder/400/300" alt="Containerized Application Deployment">
+                    </div> -->
+            <div class="project-content">
+              <h3 class="project-title">Decentralized Lending System DApp</h3>
+              <p class="project-description">
+                A blockchain-powered decentralized lending platform enabling
+                secure peer-to-peer lending and borrowing with smart contracts.
+                The DApp automates transactions with a fixed interest model,
+                ensuring transparency and efficiency.
+              </p>
+              <div class="project-tech">
+                <span class="tech-tag">Solidity</span>
+                <span class="tech-tag">Web3.js</span>
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Solidity</span>
+                <span class="tech-tag">Truffle</span>
+                <span class="tech-tag">Smart Contracts</span>
+                <span class="tech-tag">Blockchain</span>
+              </div>
+              <div class="project-links">
+                <a
+                  href="https://github.com/ameerahaider/Decentralized-Lending-System-DApp"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <i class="fab fa-github"></i> Repository
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Certifications Section with badge images -->
+    <section id="certifications" class="certifications section">
+      <div class="container">
+        <h2 class="section-title">Certifications</h2>
+        <div class="section-subtitle">My professional credentials</div>
+
+        <div class="certifications-grid">
+          <div class="certification-card">
+            <div class="certification-badge">
+              <img
+                src="images/saa.png"
+                alt="AWS Certified Solutions Architect"
+              />
+            </div>
+            <div class="certification-details">
+              <h3 class="certification-title">
+                AWS Certified Solutions Architect
+              </h3>
+              <p class="certification-issuer">
+                <i class="fab fa-aws"></i> Amazon Web Services (AWS)
+              </p>
+              <p class="certification-date">
+                <i class="far fa-calendar-alt"></i> March 2025
+              </p>
+              <a
+                href="https://www.credly.com/users/ameerahaider"
+                target="_blank"
+                class="certification-link"
+                >View Certificate</a
+              >
+            </div>
+          </div>
+
+          <div class="certification-card">
+            <div class="certification-badge">
+              <img
+                src="images/dva.png"
+                alt="AWS Certified Developer Associate"
+              />
+            </div>
+            <div class="certification-details">
+              <h3 class="certification-title">
+                AWS Certified Developer Associate
+              </h3>
+              <p class="certification-issuer">
+                <i class="fab fa-aws"></i> Amazon Web Services (AWS)
+              </p>
+              <p class="certification-date">
+                <i class="far fa-calendar-alt"></i> November 2024
+              </p>
+              <a
+                href="https://www.credly.com/users/ameerahaider"
+                target="_blank"
+                class="certification-link"
+                >View Certificate</a
+              >
+            </div>
+          </div>
+
+          <div class="certification-card">
+            <div class="certification-badge">
+              <img
+                src="images/ccp.png"
+                alt="AWS Certified Cloud Practitioner"
+              />
+            </div>
+            <div class="certification-details">
+              <h3 class="certification-title">
+                AWS Certified Cloud Practitioner
+              </h3>
+              <p class="certification-issuer">
+                <i class="fab fa-aws"></i> Amazon Web Services (AWS)
+              </p>
+              <p class="certification-date">
+                <i class="far fa-calendar-alt"></i> September 2024
+              </p>
+              <a
+                href="https://www.credly.com/users/ameerahaider"
+                target="_blank"
+                class="certification-link"
+                >View Certificate</a
+              >
+            </div>
+          </div>
+
+          <div class="certification-card">
+            <div class="certification-badge">
+              <img src="images/piplinebuilder.png" alt="AWS Academy Graduate" />
+            </div>
+            <div class="certification-details">
+              <h3 class="certification-title">
+                AWS Academy Graduate - Microservices and CI/CD Pipeline Builders
+              </h3>
+              <p class="certification-issuer">
+                <i class="fab fa-aws"></i> Amazon Web Services (AWS)
+              </p>
+              <p class="certification-date">
+                <i class="far fa-calendar-alt"></i> April 2024
+              </p>
+              <a
+                href="https://www.credly.com/users/ameerahaider"
+                target="_blank"
+                class="certification-link"
+                >View Certificate</a
+              >
+            </div>
+          </div>
+
+          <div class="certification-card">
+            <div class="certification-badge">
+              <img
+                src="images/udemy.jpeg"
+                alt="Web Development Bootcamp"
+              />
+            </div>
+            <div class="certification-details">
+              <h3 class="certification-title">Web Development Bootcamp</h3>
+              <p class="certification-issuer">
+                <i class="fas fa-graduation-cap"></i> Udemy
+              </p>
+              <p class="certification-date">
+                <i class="far fa-calendar-alt"></i> July 2024
+              </p>
+              <a
+                href="https://www.udemy.com/certificate/UC-2ef2a9b0-3789-4f7f-9da0-9faafc398339/"
+                target="_blank"
+                class="certification-link"
+                >View Certificate</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section with form -->
+    <section id="contact" class="contact section">
+      <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="section-subtitle">Let's work together</div>
+
+        <div class="contact-content">
+          <div class="contact-info">
+            <p>
+              I'm currently looking for new opportunities. Whether you have a
+              question or just want to say hi, I'll try my best to get back to
+              you!
+            </p>
+
+            <div class="contact-methods">
+              <div class="contact-method">
+                <i class="far fa-envelope"></i>
+                <a href="mailto:ameera.rizvi@hotmail.com"
+                  >ameera.rizvi@hotmail.com</a
+                >
+              </div>
+              <div class="contact-method">
+                <i class="fab fa-linkedin"></i>
+                <a href="https://linkedin.com/in/ameerahaider" target="_blank"
+                  >linkedin.com/in/ameerahaider</a
+                >
+              </div>
+              <div class="contact-method">
+                <i class="fab fa-github"></i>
+                <a href="https://github.com/ameerahaider" target="_blank"
+                  >github.com/ameerahaider</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-action">
+            <a href="mailto:ameera.rizvi@hotmail.com" class="contact-button"
+              >Say Hello</a
+            >
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="social-links">
-                    <a href="#" class="social-icon">📱</a>
-                    <a href="#" class="social-icon">📘</a>
-                    <a href="#" class="social-icon">🐦</a>
-                    <a href="#" class="social-icon">💼</a>
-                    <a href="#" class="social-icon">📹</a>
-                </div>
-                <p class="footer-text">© 2025 Your Name. All rights reserved.</p>
-                <p>End-to-End Data Solutions Expert</p>
-            </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-info">
+            <!--<img src="/images/dva.png" alt="Ameera Haider" class="footer-logo">-->
+            <p>Designed & Built by Ameera Haider</p>
+          </div>
+
+          <div class="social-links">
+            <a
+              href="https://github.com/ameerahaider"
+              target="_blank"
+              aria-label="GitHub Profile"
+            >
+              <i class="fab fa-github"></i>
+            </a>
+            <a
+              href="https://linkedin.com/in/ameerahaider"
+              target="_blank"
+              aria-label="LinkedIn Profile"
+            >
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="mailto:ameera.rizvi@hotmail.com" aria-label="Email">
+              <i class="far fa-envelope"></i>
+            </a>
+          </div>
         </div>
+      </div>
     </footer>
-</body>
+
+    <script>
+      // Smooth scrolling for navigation
+      document.addEventListener("DOMContentLoaded", function () {
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href").substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 100,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+
+        // Header scroll effect
+        const header = document.querySelector("header");
+        window.addEventListener("scroll", function () {
+          if (window.scrollY > 50) {
+            header.classList.add("scrolled");
+          } else {
+            header.classList.remove("scrolled");
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
