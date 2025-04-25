@@ -275,10 +275,10 @@
         }
         
         /* Skills Section */
-        .skills {
+/*             .skills {
             background-color: var(--secondary-color);
             padding: 100px 0;
-        }
+            } 
         
         .skills-container {
             display: flex;
@@ -318,8 +318,44 @@
             height: 100%;
             background-color: var(--primary-color);
             border-radius: 5px;
+        } */
+
+        .skill-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-top: 20px;
         }
         
+        .skill-card {
+        background-color: white;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s, box-shadow 0.3s;
+        }
+    
+        .skill-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    
+        .skill-icon {
+        font-size: 2rem;
+        margin-bottom: 15px;
+        color: var(--primary-color);
+        }
+    
+        .skill-card h4 {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+        color: var(--primary-color);
+        }
+    
+        .skill-card p {
+        font-size: 0.9rem;
+        color: #666;
+        }
         /* Experience Section */
         .experience {
             padding: 100px 0;
@@ -563,6 +599,10 @@
             .hero h1 {
                 font-size: 2.5rem;
             }
+
+            .skill-grid {
+            grid-template-columns: 1fr;
+        }
         }
     </style>
 </head>
@@ -724,7 +764,7 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="skills">
+<!--     <section id="skills" class="skills">
         <div class="container">
             <h2 class="section-title">Skills</h2>
             <div class="skills-container">
@@ -806,6 +846,89 @@
                         <p><span>ML Frameworks</span><span>80%</span></p>
                         <div class="skill-bar">
                             <div class="skill-progress" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <section id="skills" class="skills">
+    <div class="container">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-container">
+            <div class="skills-category">
+                <h3>Data Engineering</h3>
+                <div class="skill-grid">
+                    <div class="skill-card">
+                        <div class="skill-icon">🔄</div>
+                        <h4>ETL/ELT Pipelines</h4>
+                        <p>Designing and implementing efficient data pipelines for seamless data integration.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">🏗️</div>
+                        <h4>Data Warehousing</h4>
+                        <p>Building scalable data warehouses that support advanced analytics capabilities.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">📊</div>
+                        <h4>Big Data Technologies</h4>
+                        <p>Working with distributed computing frameworks to process large volumes of data.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">✅</div>
+                        <h4>Data Quality</h4>
+                        <p>Implementing robust data quality frameworks to ensure data reliability.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="skills-category">
+                <h3>Data Analysis</h3>
+                <div class="skill-grid">
+                    <div class="skill-card">
+                        <div class="skill-icon">📈</div>
+                        <h4>Statistical Analysis</h4>
+                        <p>Applying statistical methods to extract meaningful insights from complex datasets.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">📊</div>
+                        <h4>Data Visualization</h4>
+                        <p>Creating clear, compelling visualizations that communicate data stories effectively.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">💡</div>
+                        <h4>Business Intelligence</h4>
+                        <p>Developing BI solutions that drive strategic decision-making and business growth.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">🔮</div>
+                        <h4>Predictive Analytics</h4>
+                        <p>Building predictive models that identify trends and forecast future outcomes.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="skills-category">
+                <h3>Technologies</h3>
+                <div class="skill-grid">
+                    <div class="skill-card">
+                        <div class="skill-icon">🐍</div>
+                        <h4>Python/R</h4>
+                        <p>Proficient in using Python and R for data processing, analysis, and modeling.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">🗄️</div>
+                        <h4>SQL/NoSQL</h4>
+                        <p>Expert in database management and query optimization across SQL and NoSQL platforms.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">☁️</div>
+                        <h4>Cloud Platforms</h4>
+                        <p>Experienced with cloud-based data solutions on AWS, Azure, and Google Cloud.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">🧠</div>
+                        <h4>ML Frameworks</h4>
+                        <p>Working knowledge of TensorFlow, PyTorch, and other machine learning frameworks.</p>
                         </div>
                     </div>
                 </div>
